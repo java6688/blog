@@ -1,0 +1,190 @@
+﻿/* 公共样式 */
+html,body{
+  background-color: #EEEEEE;
+  overflow-x: hidden;
+}
+ul{
+  list-style: none;
+}
+a{
+  color: black;
+}
+a:hover{
+  text-decoration: none;
+  color: #D56464;
+}
+/* .card{
+  background: #FAFAFA;
+  border-radius: 5px;
+  margin-bottom: 10px;
+} */
+
+/* 注册登录样式 */
+.topbar{
+  font-size: 14px;
+  position: relative;
+  height: 35px;
+  line-height: 30px;
+}
+.topbar .btn{
+  position: absolute;
+  right: 50px;
+}
+.topbar .uicon{
+  position: absolute;
+  right: 50px;
+}
+.topbar .uicon img{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.topbar .uicon img:hover{
+  border: 2px solid #D56464;
+}
+.topbar a{
+  text-decoration: none;
+  font-size: 14px;
+}
+.topbar a:hover{
+  color: #D56464;
+}
+
+/* 头部logo样式开始 */
+.header{
+  position: relative;
+  width: 100%; 
+  height: 100px; 
+  /* background: url(/home/images/header.jpg) no-repeat;
+  background-size: cover; */
+  background-color: #D56464;
+  color: white;
+}
+.header .logo{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  height: 100%;
+  line-height: 100px;
+  cursor: default;
+}
+.header .logo:hover .othername{
+  margin-right: 50px;
+}
+.header .logo .othername{
+  /* position: absolute; */
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 36px;
+  transition: .3s;
+}
+.header .logo .name{
+  /* position: absolute; */
+  display: inline-block;
+  font-size: 24px;
+}
+/* 头部logo样式结束 */
+/* 导航栏样式开始 */
+.nav{
+ width: 100%;
+}
+.clearfix::after{
+  display: block;
+  content: '';
+  clear: both;
+}
+.nav-active{
+  background: #D56464;
+  /* border-top: 3px solid orangered; */
+}
+.menu{
+  width: 100%;
+  background-color: #584D4D;
+  padding: 0 80px;
+}
+@media screen and (max-width: 1000px) {
+  .menu{
+    padding: 0 64px;
+  }
+}
+
+.nav-item{
+  float: left;
+  width: 120px;
+  line-height: 50px;
+  text-align: center;
+  margin-right: 1px;
+}
+.nav-item a{
+  display: block;
+  text-decoration: none;
+  color: white;
+  width: 100%;
+  height: 100%;
+  padding: 1px;
+  box-sizing: border-box;
+}
+.nav-item a:hover{
+  background-color: #D56464;
+}
+
+.search_item{
+  float: right;
+}
+.form-inline{
+  margin-bottom: 10px;
+}
+.form-inline .search_input{
+  width: 260px;
+  /* width: 60px; */
+  /* transition: 1s; */
+}
+.search_item .navbar{
+  padding: 8px 0;
+}
+.form-inline .search_btn{
+  text-align: center;
+  /* padding: 0; */
+  margin: 0;
+}
+/* 导航栏样式结束 */
+
+/* 分页样式 */
+.page{
+  text-align: center;
+}
+.page a{
+      display: inline-block;
+      text-decoration: none;
+      background: white;
+      margin: 0 5px;
+      padding: 0 5px;
+      min-width: 25px;
+      height: 25px;
+      border-radius: 10%;
+}
+.page a:hover{
+  background: #D56464;
+  color: white;
+}
+a.active{
+  color: white;
+  background: #D56464;
+}
+
+/* 底部样式 */
+.footer{
+  margin-top: 50px;
+  height: 80px;
+  line-height: 80px;
+  width: 100%;
+  text-align: center;
+  background: #584D4D;
+}
+@media screen and (max-device-width: 1000px) {
+  .form-inline .search_input{
+    width: 160px;
+  }
+}

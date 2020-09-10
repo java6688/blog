@@ -1,0 +1,113 @@
+﻿{{extend './common/layout.html'}}
+  {{block 'link'}}
+    <link rel="stylesheet" type="text/css" href="/home/css/common/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/home/css/detail.css"/>
+    <link rel="stylesheet" type="text/css" href="/home/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/home/css/guestbook.css"/>
+    <link rel="stylesheet" type="text/css" href="/home/dist/barrage/css/barrager.css">
+  {{/block}}
+  {{block 'main'}}
+    {{include './common/header.html'}}
+    <div class="container">
+      <!-- 评论开始 -->
+      <div class="guestbook">
+        <!-- <h4>评论</h4> -->
+        <form class="comment-form" action="/home/guestbookAdd" method="post">
+          <textarea class="comment" name="content" {{userInfo ? 'placeholder="在这里输入留言内容"' :'disabled' }} required></textarea>
+          <input type="hidden" name="uid" value="{{@userInfo && userInfo._id}}"></input>
+          <div class="items">
+            <input id="barrage" type="submit" value="点击留言">
+          </div>
+          {{if !userInfo}}
+          <a class="login-con" href="/admin/login">
+            <span>点我登录后才能留言弹幕哦！</span>
+          </a>
+          {{/if}}
+        </form>
+        <div class="comment-list liuyan">
+          <div class="label">
+            <span class="gtitle">留言板：</span>
+            <span class="guestbook-sum">共有<strong style="font-size: 30px;">{{guestbooks.length}}</strong>条留言</span>
+          </div>
+          {{if guestbooks && !guestbooks[0]}}
+            <div class="comment-wrap ">
+              赶快给我留言八！
+            </div>
+          {{/if}}
+          {{each guestbooks}}
+          <div class="comment-wrap">
+            <div class="article-info clearfix">
+              <span class="icon">
+                <a href="javascript:;">
+                  <img src="/home/images/test.jpg" >
+                </a>
+              </span>
+              <span class="author" data-info="{{$value.uid.username}}">{{$value.uid.username}}</span>
+              <span class="time">{{$value.time}}</span>
+            </div>
+            <div class="comment-content content" data-info="{{$value.content}}">
+              {{$value.content}}
+            </div>
+          </div>
+         {{/each}}
+        </div>
+      </div>
+      <!-- 评论结束 -->
+      {{include './common/right.html'}}
+    </div>
+    {{include './common/footer.html'}}
+  {{/block}}
+  {{block 'script'}}
+  <script type="text/javascript" src="/home/jquery/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="/home/dist/barrage/js/jquery.barrager.js"></script>
+    <script type="text/javascript">
+      var username = document.getElementsByClassName('author')
+      var content = document.getElementsByClassName('content')
+      // 所有评论数据
+      var items = [{img: '/home/images/barrage.jpg', username: '有志女青年', content:  '来咯来咯！'}, {username: '有志男青年', content:  '富强'},{username: '有志男青年', content:  '民主'},{username: '有志男青年', content:  '文明'},{username: '有志男青年', content:  '和谐'},{username: '有志男青年', content:  '自由'},{username: '有志男青年', content:  '平等'},{username: '有志男青年', content:  '公正'},{username: '有志男青年', content:  '法治'},{username: '有志男青年', content:  '爱国'},{username: '有志男青年', content:  '敬业'},{username: '有志男青年', content:  '诚信'},{username: '有志男青年', content:  '友善'}]
+      for(var i=0; i<username.length; i++){
+        // 获取单个评论，再铺上到数组里面
+        var item = {}
+        item.username = username[i].dataset.info
+        item.content = content[i].dataset.info
+        items.push(item)
+      }
+      
+      // 弹幕代码
+      var index = 0
+      var timer = null
+      var barrage = document.getElementById('barrage')
+      // 执行弹幕方法
+      function startBarrage() {
+        timer = setInterval(run_example, 1000)
+      }
+      barrage.onclick = function() {
+        startBarrage()
+      }
+      function  run_example(){
+        var item = {
+           img:items[index].img ? items[index].img : '/home/images/test.jpg', //图片 
+           info:items[index].username + '：' + items[index].content, //文字 
+           href:'javascript:;', //链接 
+           close:true, //显示关闭按钮 
+           speed:6, //延迟,单位秒,默认6 
+           // bottom:70, //距离底部高度,单位px,默认随机 
+           color:'#fff', //颜色,默认白色 
+           old_ie_color:'#000000', //ie低版兼容色,不能与网页背景相同,默认黑色 
+         }
+        // var example_item={'info':items[index].content};
+        var example_item=item;
+        $('body').barrager(example_item);
+        if(index < items.length-1){
+          index++
+        } else {
+          index = 0
+          clearInterval(timer)
+          items = null
+        }
+        return false;
+      }
+      // 进入留言页面先执行一次
+      startBarrage()
+    </script>
+  {{/block}}

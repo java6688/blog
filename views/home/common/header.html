@@ -1,0 +1,80 @@
+<!-- 用户信息 -->
+<div class="topbar">
+  <span class="iconfont icon-laba" style="float: left;display: inline-block; height: 100%; line-height: 38px; margin-left: 60px; font-size: 14px;">
+    欢迎来访~
+  </span>
+{{if userInfo}}
+  <div class="uicon">
+    <a href="/home/persional?id={{userInfo && userInfo.id}}">
+      <img src="/home/images/test.jpg" title="{{userInfo.username}}" alt="{{userInfo.username}}">
+    </a>
+    <a href="/home/persional?id={{userInfo && userInfo.id}}">个人中心</a>
+    <span>|</span>
+    <a href="/home/logout">退出登录</a>
+  </div>
+  {{else}}
+  <div class="btn">
+    <a href="/home/register" target="_blank">注册</a>
+    <span>|</span>
+    <a href="/admin/login" target="_blank">登录</a>
+  </div>
+{{/if}}
+</div>
+
+<div class="header">
+  <h1 class="logo" style="font-size: 36px;">
+    <span class="othername">^o^</span>
+    <span class="name">刘广海的个人博客</span>
+  </h1>
+</div>
+<!-- 头部logo结束 -->
+<!-- 导航栏开始 -->
+<div class="nav">
+  <ul class="menu clearfix">
+    <li class="nav-item">
+      <a class="{{active == '首页' ? 'nav-active':''}}" href="/">首页</a>
+    </li>
+    <li class="nav-item">
+      <a class="{{active == '每日一语' ? 'nav-active':''}}" href="/home/mood?cate=每日一语">每日一语</a>
+    </li>
+    <li class="nav-item">
+      <a class="{{active == '随心分享' ? 'nav-active':''}}" href="/home/life?cate=随心分享">随心分享</a>
+    </li>
+    <li class="nav-item">
+      <a class="{{active == '技术分享' ? 'nav-active':''}}" href="/home/technology?cate=技术分享">技术分享</a>
+    </li>
+    <li class="nav-item">
+      <a class="{{active == '给我留言' ? 'nav-active':''}}" href="/home/guestbook">给我留言</a>
+    </li>
+    <li class="nav-item userinfo">
+      <a class="{{active == '个人中心' ? 'nav-active':''}}" href="/home/persional?id={{userInfo && userInfo.id}}">个人中心</a>
+    </li>
+    <!-- <li class="search_item">
+      <nav class="navbar navbar-dark">
+        <form class="form-inline" action="/home/search" method="get">
+          <input class="search_input form-control mr-sm-2" type="search" name="keyword" placeholder="输入标题关键词" aria-label="Search">
+          <button class="search_btn btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+        </form>
+      </nav>
+    </li> -->
+  </ul>
+</div>
+<!-- 导航栏结束 -->
+
+<script src="/home/js/tools.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+   /*
+   (function(){
+     var $lis = $('.nav-item')
+     $lis.on('click', function(){
+       $.each($lis, function(index, item){
+        removeClass(item, 'nav-active')
+       })
+       toggleClass($(this)[0], 'nav-active')
+       
+      // 为当前点击的导航加上高亮，其余的移除高亮
+      // $(this).addClass('nav-active').siblings('li').removeClass('nav-active');
+     })
+   })()
+   */
+</script>

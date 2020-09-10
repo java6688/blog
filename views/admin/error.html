@@ -1,0 +1,29 @@
+{{extend './common/layout.html'}}
+
+{{block 'main'}}
+  <h1 style="color: red;">404 not found {{msg}}</h1>
+  <a href="/admin/login">返回登录页面</a>
+  <h2 id="dtime"></h2>
+{{/block}}
+
+{{block 'script'}}
+  <script>
+    console.log('afafasfas')
+    var $dtime = $('#dtime');
+    console.log(dtime)
+    var count = 3;
+    $dtime.innerHTML = '还有' + count + '秒，服务器将自动跳转到登录页面';
+    var timer = setInterval(function() {
+      $dtime.innerHTML = '还有' + count + '秒，服务器将自动跳转到登录页面';
+      count--;
+      if (count < 0) {
+        clearInterval(timer);
+      }
+      dtime.innerHTML = '还有' + count + '秒，服务器将自动跳转到登录页面';
+    }, 1000)
+    setTimeout(function() {
+      location.href = '/admin/login';
+    }, 3000)
+  </script>
+{{/block}}
+  

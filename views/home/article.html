@@ -1,0 +1,118 @@
+﻿{{extend './common/layout.html'}}
+  {{block 'link'}}
+    <link rel="stylesheet" type="text/css" href="/home/css/common/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/home/css/common/breadcrumb.css"/>
+    <link rel="stylesheet" type="text/css" href="/home/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/home/css/detail.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+  {{/block}}
+  {{block 'main'}}
+    {{include './common/header.html'}}
+    <!-- 主体内容部分开始 -->
+    <!-- 面包屑导航开始 -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li>您现在的位置：</li>
+          <li class="breadcrumb-item"><a href="#">首页</a></li>
+          <li class="breadcrumb-item"><a href="#">{{article.category}}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{article.title}}</li>
+        </ol>
+      </nav>
+    <!-- 面包屑导航结束 -->
+      <!-- 文章内容部分开始 -->
+      <div class="container">
+        <div class="article left-content">
+          <h2 class="title">{{article.title}}</h1>
+          <div class="info">
+            <span class="user iconfont icon-zuozhe">{{article.author.username}}</span>
+            <span class="dtime iconfont icon-shijian">
+              {{article.publicDate}}
+            </span>
+          </div>
+          <div class="content">
+            <div class="text">
+             {{@article.content}}
+            </div>
+          </div>
+          <!-- 分析链接开始 -->
+          <div class="link">
+            <span>分享到：</span>
+            <a class="weibo" href="http://service.weibo.com/share/share.php?url=你的分享网址&sharesource=weibo&title=你的分享标题&pic=你的分享图片&appkey=你的key" target="_blank">
+              <span class="iconfont icon-weibo" title="微博"></span>
+            </a>
+            <a class="qzone" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=你的网址&sharesource=qzone&title=你的分享标题&pics=你的分享图片&summary=你的分享描述信息" target="_blank">
+              <span class="iconfont icon-QQkongjian" title="QQ空间"></span>
+            </a>
+            <a class="qq" href="http://connect.qq.com/widget/shareqq/index.html?url=http://localhost&sharesource=qzone&title=你的分享标题&pics=你的分享图片&summary=你的分享描述信息&desc=你的分享描述信息" target="_blank">
+              <span class="iconfont icon-QQ" title="QQ"></span>
+            </a>
+          </div>
+          <!-- 分析链接结束 -->
+          <!-- 上下文 -->
+          <div class="nextpage">
+            {{if prePage}}
+            <div>
+              <b>上一篇：</b>
+              <a href="/home/article?id={{@prePage && prePage._id}}">{{prePage && prePage.title}}</a>
+            </div>
+            {{/if}}
+            {{if nextPage}}
+            <div>
+              <b>下一篇：</b>
+              <a href="/home/article?id={{@nextPage && nextPage._id}}">{{nextPage && nextPage.title}}</a>
+            </div>
+            {{/if}}
+          </div>
+          <!-- /上下文 -->
+          <!-- 评论开始 -->
+          <div class="article-comment">
+            <!-- <h4>评论</h4> -->
+            <form class="comment-form" action="/home/comment" method="post">
+              <textarea class="comment" name="content" {{userInfo ? 'placeholder="在这里输入评论内容"' :'disabled' }} required></textarea>
+              <input type="hidden" name="aid" value="{{@article._id}}"></input>
+              <input type="hidden" name="uid" value="{{@userInfo && userInfo._id}}"></input>
+              <div class="items">
+                <input type="submit" value="提交评论">
+              </div>
+              {{if !userInfo}}
+              <a class="login-con" href="/admin/login">
+                <span>点击我登录后再评论哦！</span>
+              </a>
+              {{/if}}
+            </form>
+            <div class="comment-list">
+              <div class="label">最新评论：</div>
+              {{if !comments[0]}}
+                <div class="comment-wrap ">
+                  这篇文章还没有评论哦！
+                </div>
+              {{/if}}
+              {{each comments}}
+              <div class="comment-wrap">
+                <div class="article-info clearfix">
+                  <span class="icon">
+                    <a href="javascript:;">
+                      <img src="/home/images/test.jpg" >
+                    </a>
+                  </span>
+                  <span class="author">{{$value.uid.username}}</span>
+                  <span class="time">{{$value.time}}</span>
+                </div>
+                <div class="comment-content">
+                  {{$value.content}}
+                </div>
+              </div>
+             {{/each}}
+            </div>
+          </div>
+          <!-- 评论结束 -->
+        </div>
+        {{include './common/right.html'}}
+      </div>
+      <!-- 文章内容部分结束 -->
+  {{include './common/footer.html'}}
+  {{/block}}
+  {{block 'script'}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  {{/block}}

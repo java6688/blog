@@ -1,0 +1,40 @@
+﻿<!-- 右边部分内容开始 -->
+<div class="right-content detail">
+  <form class="form-inline" action="/home/search" method="get">
+    <input class="search_input form-control mr-sm-2" type="search" name="keyword" placeholder="请输入关键词" aria-label="Search">
+    <button class="search_btn btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+  </form>
+  <div class="about card">
+    <h6>关于博主</h6>
+    <div class="about-me">
+      <p>个人资料：男，九零后，金牛座。</p>
+      <p>爱好: 音乐 动漫 篮球 学习 coding</p>
+      <p>IT编程界菜鸟，每天幻想可以通过秃头改变世界。</p>
+    </div>
+  </div>
+  <div class="new-art card">
+    <h6>最新文章</h6>
+    <ul>
+      {{each newArticles && newArticles}}
+      <li>
+        <a href="/home/article?id={{@$value._id}}&url={{@active}}" target="_blank">{{$value.title}}</a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="contact card">
+    <h6>联系我</h6>
+    <div class="contact-me">
+      <a href="http://wpa.qq.com/msgrd?v=3&uin=1253490794&site=qq&menu=yes">
+        <span class="qq iconfont icon-qq"></span>
+      </a>
+    </div>
+  </div>
+  <div class="flink card">
+    <h6>友情链接</h6>
+    <div class="link">
+      <a href="">番茄酱的个人博客</a>
+    </div>
+  </div>
+</div>
+<!-- 右边部分内容结束 -->

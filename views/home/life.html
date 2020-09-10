@@ -1,0 +1,70 @@
+﻿{{extend './common/layout.html'}}
+  {{block 'link'}}
+    <link rel="stylesheet" type="text/css" href="/home/css/common/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/home/css/index.css"/>
+  {{/block}}
+  {{block 'main'}}
+    {{include './common/header.html'}}
+    <!-- 主体内容部分开始 -->
+    <div class="container">
+      <!-- 左边部分内容开始 -->
+      <div class="left-content">
+        <!-- 散文内容开始 -->
+        <div class="essay">
+          <div class="place">
+            <h2>最新文章</h2>
+          </div>
+          <ul class="item-list">
+            {{each articles.records}}
+            <li class="item">
+              <div class="dec-img">
+                <a href="/home/article?id={{@$value._id}}&url={{@active}}">
+                  <img src="{{$value.cover}}" >
+                </a>
+              </div>
+              <div class="dec">
+                <a href="/home/article?id={{@$value._id}}&url={{@active}}">
+                  <h2>{{$value.title}}</h2>
+                </a>
+                <div class="content">
+                    {{@$value.content==null?'':$value.content && $value.content.replace(/<[^>]+>/g, '').substr(0, 80) + '...'}}
+                </div>
+                <div class="info clearfix">
+                  <div class="left">
+                    <span class="iconfont icon-biji">{{$value.category}}</span>
+                    <span class="dtime iconfont icon-shijian">
+                      {{$value.publicDate.split(' ')[0]}}
+                    </span>
+                    <span class="pinlun iconfont icon-liulan-copy">{{$value.views}}</span>
+                    <span class="liulan iconfont icon-pinglun">
+                      {{$value.comments}}
+                    </span>
+                    <!-- <span class="dianzan iconfont icon-dianzan1">200</span> -->
+                  </div>
+                </div>
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+          <!-- 分页开始 -->
+          <div class="page w1100">
+            {{if articles.page > 1}}
+            <a href="/home/life?cate={{articles.records[0].category}}&page={{articles.page-1}}">上一页</a>
+            {{/if}}
+            {{each articles.display}}
+            <a href="/home/life?cate={{articles.records[0].category}}&page={{$value}}" class="{{articles.page == $value ? 'active':''}}">{{$value}}</a>
+            {{/each}}
+            {{if articles.page < articles.pages}}
+            <a href="/home/life?cate={{articles.records[0].category}}&page={{articles.page-0+1}}">下一页</a>
+            {{/if}}
+          </div>
+          <!-- 分页结束 -->
+        </div>
+        <!-- 散文内容结束 -->
+      </div>
+      <!-- 左边部分内容结束 -->
+      {{include './common/right.html'}}
+    </div>
+    <!-- 主体内容部分结束 -->
+    {{include './common/footer.html'}}
+  {{/block}}

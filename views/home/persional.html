@@ -1,0 +1,31 @@
+﻿{{extend './common/layout.html'}}
+  {{block 'link'}}
+    <link rel="stylesheet" type="text/css" href="/home/css/common/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/home/css/persional.css"/>
+  {{/block}}
+  {{block 'main'}}
+    {{include './common/header.html'}}
+    <div class="container">
+      <form action="/home/user-edit?id={{@user && user._id}}" method="post">
+        <div class="form-group">
+          <div class="user">
+            <img class="user-icon" src="/home//images/test.jpg" >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">用户名</label>
+          <input type="text" name="username" class="form-control" value="{{user && user.username}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">邮箱</label>
+          <input type="email" name="email" class="form-control" value="{{user && user.email}}" disabled>
+        </div>
+        <div class="form-group">
+          <label>密码</label>
+          <input type="text" name="password" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">修改</button>
+      </form>
+    </div>
+    {{include './common/footer.html'}}
+  {{/block}}

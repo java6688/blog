@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+    <!-- 侧边栏 -->
+    <div class="aside fl">
+      <ul class="menu list-unstyled">
+        <li>
+          <a class="item {{active == 'user' ? 'active':''}}" href="/admin/user">
+            <span class="glyphicon glyphicon-user"></span>
+            用户管理
+          </a>
+            </li>
+        <li>
+          <a class="item {{active == 'article' ? 'active':''}}" href="/admin/article">
+            <span class="glyphicon glyphicon-th-list"></span>
+            文章管理
+          </a>
+        </li>
+        <li>
+          <a class="item {{active == 'mood' ? 'active':''}}" href="/admin/mood">
+            <span class="glyphicon glyphicon-th-list"></span>
+            每日一语
+          </a>
+        </li>
+        </ul>
+        <div class="cprt">
+            Powered by <a href="/" target="_blank">coding不秃头</a>
+        </div>
+    </div>
+    <!-- 侧边栏 -->
+	</body>
+</html>

@@ -1,0 +1,200 @@
+﻿
+/* 轮播图样式开始 */
+.carousel{
+  height: 360px;
+  width: 786px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.carousel-caption{
+  bottom: 90px;
+}
+.slide-img{
+  width: 100%;
+  max-height: 360px;
+}
+/* 轮播图样式结束 */
+
+/* 内容主体部分容器样式开始 */
+.container{
+  max-width: 90%;
+  margin-top: 10px;
+  display: flex;
+}
+/* 左边部分样式样式开始 */
+.container>.left-content{
+  flex: 2.5;
+  padding-right: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+  .container>.left-content>.essay {
+    min-height: 1376px;
+  }
+}
+
+.container>.left-content>.essay>.place>h2 {
+  font-size: 20px;
+  padding: 10px 0;
+  border-bottom: 4px solid #D56464;
+}
+.container>.left-content>.essay>.item-list{
+  padding-left: 0;
+}
+.container>.left-content>.essay>.item-list>.item{
+  display: flex;
+  width: 100%;
+  height: 200px;
+  background-color: #FAFAFA;
+  padding: 25px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: .5px solid gainsboro;
+}
+/* 文章图片样式 */
+.container>.left-content>.essay>.item-list>.item .dec-img{
+  /* flex: 1; */
+  /* display: block; */
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+.container>.left-content>.essay>.item-list>.item .dec-img a{
+  display: inline-block;
+}
+.container>.left-content>.essay>.item-list>.item img{
+  width: 150px;
+  height: 150px;
+  margin-right: 25px;
+  border: 5px solid #EEEEEE;
+  border-radius: 10px;
+}
+/* 文章描述样式 */
+.container>.left-content>.essay>.item-list>.item .dec{
+  position: relative;
+  flex: 3;
+  padding: 10px 0px 0 20px;
+}
+.container>.left-content>.essay>.item-list>.item .dec a{
+  font-size: 20px;
+  text-decoration: none;
+}
+.container>.left-content>.essay>.item-list>.item .dec a:hover{
+  color: #D56464;
+}
+.container>.left-content>.essay>.item-list>.item .dec a h2{
+  font-size: 18px;
+}
+.container>.left-content>.essay>.item-list>.item .dec .content{
+  max-width: 600px;
+  max-height: 80px;
+  font-size: 14px;
+  margin: 0;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  display: -webkit-box; 
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 4;
+}
+.container>.left-content>.essay>.item-list>.item .dec .info{
+  position: absolute;
+  bottom: 0;
+  /* top: 0; */
+  margin-top: 15px;
+  padding-right: 5px;
+  /* transform: translateY(50px); */
+  width: 100%;
+}
+.container>.left-content>.essay>.item-list>.item .dec .info>.left{
+  float: left;
+}
+.container>.left-content>.essay>.item-list>.item .dec .info>.right{
+  float: left;
+  margin-left: 275px;
+}
+.container>.left-content>.essay>.item-list>.item .dec .info span{
+  font-size: 13px;
+}
+.container>.left-content>.essay>.item-list>.item .dec .info .dtime{
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 300px;
+}
+.liulan{
+  margin: 0 6px;
+}
+/* 左边部分样式样式结束 */
+/* 右边部分样式样式开始 */
+.right-content{
+  flex: 1;
+  /* padding: 10px; */
+}
+.right-content>div{
+  background: #FAFAFA;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.right-content h6{
+  display: inline-block;
+  margin: 10px 5px;
+  border-bottom: 1px solid #D56464;
+  padding: 2px 0;
+}
+.right-content>.about>.about-me{
+  width: 100%;
+  min-height: 100px;
+  margin-left: 6px;
+  font-size: 14px;
+  padding: 0 6px;
+}
+.right-content>.contact>.contact-me{
+  width: 100%;
+  height: 100px;
+  font-size: 14px;
+  padding: 0 10px;
+}
+.right-content>.contact>.contact-me>a{
+  text-decoration: none;
+}
+.right-content>.contact>.contact-me>a>.qq{
+  display: inline-block;
+  font-size: 50px;
+  transition: 1s;
+  color: #584D4D;
+}
+.right-content>.contact>.contact-me>a>.qq:hover{
+  transform: rotate(360deg);
+}
+.right-content>.flink{
+  min-height: 200px;
+}
+.right-content>.flink>.link{
+  padding: 0 10px;
+  font-size: 14px;
+}
+.right-content>.flink>.link>a{
+  font-size: 12px
+}
+.right-content>.new-art>ul{
+  list-style: initial;
+  font-size: 14px;
+}
+.right-content>.new-art>ul a:hover{
+  color: #D56464;
+}
+/* 右边部分样式样式结束 */
+/* 内容主体部分容器样式结束 */
+
+@media screen and (max-width: 1000px) {
+  .carousel{
+    height: 300px;
+    width: 554px;
+  }
+  .container>.left-content>.essay>.item-list>.item .dec .info>.right{
+    margin-left: 150px;
+  }
+ .container>.left-content>.essay>.item-list>.item .dec .info .dtime{
+  margin-right: 140px;
+}
+}

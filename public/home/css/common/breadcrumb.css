@@ -1,0 +1,12 @@
+/* 面包屑导航样式开始 */
+.breadcrumb{
+  width: 100%;
+  padding: 6px 6%;
+  background: none;
+  font-size: 14px;
+  color: gray;
+}
+.breadcrumb-item+.breadcrumb-item::before{
+  content: ">";
+}
+/* 面包屑导航样式结束 */

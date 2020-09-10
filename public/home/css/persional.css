@@ -1,0 +1,15 @@
+form{
+  min-height: 1365px;
+}
+.form-group:first-child{
+  text-align: center;
+}
+.user{
+  margin: 20px 0;
+}
+.user-icon{
+  border: 2px solid salmon;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
